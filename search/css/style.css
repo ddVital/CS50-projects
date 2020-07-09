@@ -1,0 +1,206 @@
+body, html {
+    margin: 0;
+    color: black;
+    font-family: 'Lato', sans-serif;
+}
+
+#page-links {
+    float: right;
+}
+
+#page-links a {
+    display: block;
+    text-decoration: none;
+    list-style: none;
+}
+
+#page-links a:hover {
+    text-decoration: underline;
+}
+
+li {
+    margin: 12px;
+    float: left;
+    list-style: none;
+}
+
+
+#nav-links {
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+#nav-logo {
+    width: 102px;
+    margin: 10px;
+}
+
+
+.google-logo {
+    margin-left: 25%;
+    margin-top: -10%;
+    margin-bottom: 30px;
+}
+
+#search-field {
+    position: absolute;
+    top: 260px;
+    left: 30%;
+    width: 580px;
+    height: 30px;
+
+}
+
+#advanced-title p {
+    color: #d93025;
+    font-size: 20px;
+    /* margin: 25px 45px; */
+    padding: 5px 35px 20px;
+    border-bottom: 1px solid rgb(177, 177, 177);
+}
+
+span {
+    position: relative;
+    font-size: 13pt;
+}
+
+#advanced-search-field {
+    width: 100%;
+    margin: 45px;
+    margin-top: 60px;
+    font-size: 13px;
+}
+
+#advanced-search-field p {
+    position: absolute;
+    font-size: 10pt;
+    left: 770px;
+    margin-top: -30px;
+}
+
+.advanced-input {
+    width: 40%;
+    padding: 5px;
+    margin: 10px;
+    position: relative;
+    left: 160px;
+    border: 1px solid rgba(0, 0, 0, 0.295);
+}
+
+label {
+    position: absolute;
+    margin-top: 15px;
+}
+
+#bnt-advanced {
+    background-color: #4d90fe;
+    border: 1px solid #3278e9;
+    color: white;
+    padding: 9px;
+    border-radius: 4px;
+    position: absolute;
+    margin-left: 40%;
+    margin-top: 30px;
+}
+
+#search-icon {
+    position: absolute;
+    margin: 14px;
+    color: rgb(156, 156, 156);
+}
+
+#find-icon {
+    position: absolute;
+    margin: 16px;
+    font-size: 13pt;
+    color: #256aff;
+    left: 497px;
+    top: 63px;
+}
+
+#camera-icon {
+    position: absolute;
+    margin: 14px;
+    left: 450px;
+    top: 63px;
+    font-size: 18pt;
+    color: rgb(156, 156, 156);
+}
+
+#images-search-icon {
+    position: absolute;
+    margin: 14px;
+    color: rgb(0, 119, 255);
+}
+
+.search {
+    border: 1px solid rgb(156, 156, 156);
+    width: 500px;
+    padding: 22px;
+    border-radius: 40px;
+    text-align: initial;
+    margin-bottom: 40px;
+    cursor: text;
+}
+
+#search-input {
+    border: none;
+    position: absolute;
+    top: 74px;
+    width: 440px;
+    left: 40px;
+    padding: 6px;
+    font-size: 13pt;
+}
+
+
+.search:focus, #search-input:focus {
+    outline: none;
+}
+
+.search:hover {
+    border: transparent;
+    margin-bottom: 42px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.473);
+}
+
+#search_button {
+    position: absolute;
+    display: block;
+    margin-left: 25%;
+}
+  
+#lucky_button {
+    position: absolute;
+    display: block;
+    margin-left: 50%;
+    top: 154px;
+}
+
+.home-bnt {
+    border: 1px solid #dcdcdc;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #444;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 8px;
+    background: -webkit-linear-gradient(top, #f5f5f5, #f1f1f1);
+    border-radius: 2px;
+}
+
+.home-bnt:hover {
+    background: -webkit-linear-gradient(top, #ebeaea, #e6e6e6);
+}
+
+
+footer {
+    position: absolute;
+    background-color: #f2f2f2;
+    bottom: -1px;
+    width: 100%;
+    text-align: left;
+}
+
+p {
+    margin-left: 14px;
+}

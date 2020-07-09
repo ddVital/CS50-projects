@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <title>Project 0: advanced Search</title>
+    </head>
+    <body>
+
+        <div id="nav-links">
+            <img src="img/google-logo.png" alt="" id="nav-logo">
+            <div id="page-links">
+                <li><a href="index.html">Search</a></li>
+                <li><a href="images.html">Images</a></li>
+            </div>
+        </div>
+
+        <div id="advanced-title"><p>Advanced Search</p></div>
+        <div id="advanced-search-field">
+            <span>Find pages with...</span>
+            <form action="https://www.google.com/search?">
+                <label for="as_q">all these words:               </label><input type="text" name="as_q" class="advanced-input" id="as_q" autocomplete="off"><p>Type the important words: tri-colour rat terrier</p><br>
+                <label for="as_epq">this exact word or phrase:   </label><input type="text" name="as_epq" class="advanced-input" id="as_epq" autocomplete="off"><p>Put exact words in quotes: "rat terrier"</p><br>
+                <label for="as_oq">any of these words:           </label><input type="text" name="as_oq" class="advanced-input" id="as_oq" autocomplete="off"><p>Type OR between all the words you want: miniature OR standard</p><br>
+                <label for="as_eq">none of these words:          </label><input type="text" name="as_eq" class="advanced-input" id="as_eq" autocomplete="off"><p>Put a minus sign just before words that you don't want: -rodent, -"Jack Russell"</p><br>
+                <button type="submit" id="bnt-advanced">Advanced Search</button>
+            </form>
+        </div>
+
+        <footer>
+            <p>CS50w project 0 by <a href="https://github.com/ddVital" target="_blank" id="footer-link">ddVital</a></p>
+        </footer>
+    </body>
+</html>
