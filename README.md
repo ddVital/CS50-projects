@@ -1,2 +1,4 @@
-# CS50w-2020-projects
+# CS50 projects
+
 my CS50 projects
+
