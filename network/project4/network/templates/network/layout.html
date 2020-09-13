@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="{% static 'network/styles.css' %}" rel="stylesheet">
+        <script src="{% static 'network/index.js' %}"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+            <a class="navbar-brand center-links" href="{% url 'index' %}" id="brand">Network</a>
+
+            <div id="links">
+                <ul class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">All Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'following' %}">Following</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+                        </li>
+                    {% else %}
+                        <div id="nav-login">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login' %}" id="log-in">Log In</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'register' %}" id="register">Register</a>
+                            </li>
+                        </div>
+                    {% endif %}
+                </ul>
+            </div>
+
+            {% if user.is_authenticated %}
+                {% if user.profile_photo %}
+                    <a href="{% url 'profile' user.username %}">
+                        <img src="http://127.0.0.1:8000/media/{{ user.profile_photo }}" alt="{{ user.username }}" id="navbar-pic">
+                    </a>
+                {% else %}
+                    <a href="{% url 'profile' user.username %}">
+                        <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-trendy-style-social-media-user-icon-187599373.jpg" alt="{{user.username}}" id="navbar-pic">
+                    </a>
+                {% endif %}
+                
+            {% endif %}
+        </nav>
+
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

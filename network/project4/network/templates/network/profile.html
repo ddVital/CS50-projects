@@ -1,0 +1,52 @@
+{% extends "network/layout.html" %}
+
+{% block title %}
+    {{ user_profile.username}}
+{% endblock %}
+
+{% block body %}
+    <div id="profile-page" class="page-margin">
+        <div>
+            {% if user_profile.header_photo %}
+                <img src="http://127.0.0.1:8000/media/{{ user_profile.header_photo }}" alt="{{user_profile.user_profilename}}" id="profile-page-header" onmouseover="editHeaderImg()">
+            {% else %}
+                <img src="https://mashpurveyors.com/wp-content/uploads/2018/12/Grey-1500x500.jpg" alt="{{user_profile.user_profilename}}" id="profile-page-header">
+            {% endif %}
+        </div>
+
+        {% if user_profile.profile_photo %}
+            <img src="http://127.0.0.1:8000/media/{{ user_profile.profile_photo }}" alt="{{user_profile.user_profilename}}" id="profile-page-pic">
+        {% else %}
+            <img src="https://thumbs.dreamstime.com/b/default-avatar-profile-trendy-style-social-media-user_profile-icon-187599373.jpg" alt="{{user_profile.user_profilename}}" id="profile-page-pic">
+        {% endif %}
+
+        <p id="profile-name">{{ user_profile.first_name }}</p>
+        {% if user_profile.is_verified %}
+            <img src="https://i.pinimg.com/originals/42/ad/0e/42ad0ebff37f0625e34df640dc4ae25d.png" alt="verified" title="verified" id="verified">
+        {% endif %}
+        <p id="profile-username">@{{ user_profile.username }}</p>
+
+        {% if user != user_profile %}
+            {% if user_profile.id in following_list %}
+                <a href="{% url 'unfollow' user_profile.username %}" id="follow">UnFollow</a>
+            {% else %}
+                <a href="{% url 'follow' user_profile.username %}" id="follow">Follow</a>
+            {% endif %}
+        {% else %}
+            <a href="{% url 'edit_user' user_profile.username %}" id="edit-profile">edit profile</a>
+        {% endif %}
+
+        <p id="bio">{{ user_profile.bio }}</p>
+        
+        {% if follow == 0 %}
+            <p id="followers"><span>{{ follow }}</span> Followers</p>
+            <p id="following"><span>{{ follow }}</span> Following</p>
+        {% else %}
+            <p id="followers"><span>{{ follow.followers.count }}</span> Followers</p>
+            <p id="following"><span>{{ follow.following.count }}</span> Following</p>
+        {% endif %}
+
+        {% include "modules/posts.html" %}
+        
+    </div>
+{% endblock %}

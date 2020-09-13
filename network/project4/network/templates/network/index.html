@@ -1,0 +1,21 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <div class="page-margin" id="all-posts-page">
+        
+        <h1>All Posts</h1>
+        
+        <div id="new-post">
+            <h2>New post</h2>
+            <form action="{% url 'new_post' %}" method="POST">
+                {% csrf_token %}
+                <textarea name="post-content" id="post-content-field" onkeyup="charCount()"></textarea>
+                <p class="count-char">(<span id="charCount">0</span>/280)</p>
+                <button type="submit" id="tweet">Post</button>
+            </form>
+        </div>
+
+        {% include "modules/posts.html" %}
+
+    </div>
+{% endblock %}
