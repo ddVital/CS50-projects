@@ -1,0 +1,54 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Category
+{% endblock %}
+
+{% block body %}
+    <h1>Categories</h1>
+    <form action="{% url 'category' %}" method="GET">
+        <div id="category-form">
+            Select one: 
+            <select name="category">
+                <option value="">Select a category...</option>
+                <option value="Art">Art</option>
+                <option value="Cars">Cars</option>
+                <option value="Clothes">Clothes</option>
+                <option value="Games">Games</option>
+                <option value="Health & Beauty">Health & Beauty</option>
+                <option value="Home">Home</option>
+                <option value="Literature">Literature</option>
+                <option value="Music">Music</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="Science">Science</option>
+                <option value="Sports">Sports</option>
+                <option value="Technology">Technology</option>
+                <option value="Toys">Toys</option>
+                <option value="Others">Others</option>
+            </select>
+            <input type="submit" value="Search" class="submit-bnt">
+        </div>
+    </form>
+    
+    {% for result in results %}
+        {% if result.is_closed == False %}
+            <div id="auction-box" title="{{ result.product_title }}">
+                {% if result.product_image %}
+                    <img src="{{ result.product_image }}" alt="{{ result.product_title }}" id="product-img" width="190px" height="195px">
+                {% else %}
+                    <img src="https://www.trendsetter.com/pub/media/catalog/product/placeholder/default/no_image_placeholder.jpg" alt="no preview" id="product-img" width="190px" height="195px">
+                {% endif %}
+                <a href="{% url 'view_item' result.id%}"><h1 class="product-info" id="listing-title">{{ result.product_title }}</h1></a>
+                <p class="product-info" id="description">{{ result.product_description }}</p>
+                <p class="product-info">Price: <strong>${{ result.product_price }}</strong></p>
+                <p class="product-info" id="listing-details">created: {{ result.post_date }} by {{ result.username }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% if not results %}
+        {% if category != None and category != '' %}
+            <p id="no-results">Sorry, Any auction for this category...</p>
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

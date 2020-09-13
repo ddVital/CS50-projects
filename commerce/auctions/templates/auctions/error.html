@@ -1,0 +1,13 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    {{ error }}
+{% endblock %}
+
+{% block body %}
+    <div id="error">
+        <p id="error-msg"><strong>Error:</strong> {{ error }}</p>
+        <hr>
+        <p>Oops! something wrong...</p>
+    </div>
+{% endblock %}

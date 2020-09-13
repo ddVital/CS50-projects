@@ -1,0 +1,24 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    <!-- List auctions -->
+    {% for auction in auctions %}
+        {% if auction.is_closed == False %}
+            <div id="auction-box"">
+                {% if auction.product_image %}
+                <div id="index-product-img">
+                    <img src="{{ auction.product_image }}" alt="{{ auction.product_title }}" id="product-img">
+                </div>
+                {% else %}
+                    <img src="https://www.trendsetter.com/pub/media/catalog/product/placeholder/default/no_image_placeholder.jpg" alt="no preview" id="product-img">
+                {% endif %}
+                <a href="item/{{ auction.id }}"><h1 class="product-info" id="listing-title" title="{{ auction.product_title }}">{{ auction.product_title }}</h1></a>
+                <p class="product-info" id="description">{{ auction.product_description }}</p>
+                <p class="product-info"><strong>$ {{ auction.product_price }}</strong></p>
+                <p class="product-info" id="listing-details" title="in {{ auction.post_date }} by {{ auction.username }}">in {{ auction.post_date }} by {{ auction.username }}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

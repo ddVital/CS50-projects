@@ -1,0 +1,110 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    {{ auctions.product_title }}
+{% endblock %}
+
+{% block body %}
+    <!-- if the auction doesn't has a image show a default  -->
+    {% if auctions.product_image %}
+        <div id="product-view-img">
+            <img src="{{ auctions.product_image }}" alt="{{auctions.product_title}}" id="view-img">
+        </div>
+    {% else %}
+        <img src="https://www.trendsetter.com/pub/media/catalog/product/placeholder/default/no_image_placeholder.jpg" alt="no preview" id="view-img">
+    {% endif %}
+    
+    <div class="item-view-info">
+        <h1 id="view-title">{{ auctions.product_title }}</h1>
+        <div id="view-description">{{ description|safe }}</div>
+        <p id="view-price">
+            {% if auctions.is_closed == True %}
+                <strike>${{ auctions.product_price }}</strike>
+                <strong>$ {{ bid.bid_value }}</strong>
+            {% else %}
+                <strong>${{ auctions.product_price }}</strong>
+            {% endif %}
+        </p>
+        
+        <!-- BID area -->
+        <div id="bid-area">
+            {% if user.is_authenticated %}
+                {% if auctions.is_closed == True %}
+                    {% if user.username == bid.username %}
+                        <h3 id="closed-msg">Congratulations! You Won!</h3>
+                    {% else %}
+                        {% if user.username != auctions.username %}
+                            <h5 id="closed-msg">Sorry, but <a href="{% url 'user_page' bid.username %}">{{ bid.username }}</a> won this Auction...</h5>
+                        {% else %}
+                            <h5 id="closed-msg"><a href="{% url 'user_page' bid.username %}">{{ bid.username }}</a> won.</h5>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    {% if bid %}
+                        <li>Current bid: <strong> $ {{ bid.bid_value }} by {{ bid.username }}</strong></li>
+                    {% else %}
+                        No Bids yet...
+                    {% endif %}
+                    {% if user.username != auctions_creator %}
+                        <form action="{% url 'view_item' auctions.id %}" method="post">
+                            {% csrf_token %}
+                            <input type="number" name="bid" step="any" id="bid" class="text-field" placeholder="Add a bid" autocomplete="off" required>
+                            <input type="submit" value="Submit bid" class="submit-bnt">
+                        </form>
+                    {% endif %}
+                {% endif %}
+                    
+            {% else %}
+                <p class="login-msg">
+                    <a href="/login">Log in</a> or <a href="/register">Register</a> to see or add bids.
+                </p>
+            {% endif %}
+        </div>
+
+        <p id="list-details">   
+            in {{ auctions.post_date }} by <a href="{% url 'user_page' auctions.username %}">{{ auctions.username }}</a> &bull; <span id="category">{{ auctions.product_category }}</span>
+        </p>
+        
+    </div>
+
+    <!-- Options -->
+    <div id="item-options">
+        {% if auctions == watchlist %}
+            <a href="{% url 'remove_watchlist' auctions.id %}" id="watchlist-bnt">remove from Watchlist</a>
+        {% else %}
+            <a href="{% url 'add_watchlist' auctions.id %}" id="watchlist-bnt">Watchlist</a>
+        {% endif%}
+
+        {% if user.username == auctions_creator %}
+            {% if auctions.is_closed == False %}
+                <a href="{% url 'close_listing' auctions.id %}" id="close-listing" class="options" title="if you close the auction will be closed in ${{ bid.bid_value }}">Close listing</a>
+            {% endif %}
+        {% endif %}
+    </div>
+    <br>
+    <hr>
+
+    <!-- Comments area -->
+    <div id="comments-area">
+        <h2>Comments</h2>
+        {% if user.is_authenticated %}
+            <form action="{% url 'view_item' auctions.id %}" method="post">
+                {% csrf_token %}
+                <input type="text" name="comment" class="text-field" placeholder="Add a comment..." required>
+                <input type="submit" value="Comment" class="submit-bnt">
+            </form>
+            {% for comment in comments %}
+                <div id="comment">
+                    <a href="{% url 'user_page' comment.username %}">{{ comment.username }}</a> &bull; <span id="comment-date">{{ comment.date }}</span>
+                    <p id="comment-content">
+                        {{ comment.content }}
+                    </p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="comment-msg">
+                <a href="/login">Log in</a> or <a href="/register">Register</a> to see comments.
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

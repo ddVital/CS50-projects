@@ -1,0 +1,13 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    {{ auction.product_title }} closed
+{% endblock %}
+
+{% block body %}
+    <p>{{ auction.product_title }} closed <strong>successfully.</strong></p>
+    <div id="closed-listing-info">
+        <li>winner: {{ auction.winner }}</li>
+        <li>Value: {{ bid.bid_value }}</li>
+    </div>
+{% endblock %}

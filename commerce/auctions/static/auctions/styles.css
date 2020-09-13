@@ -1,0 +1,288 @@
+body {
+    padding: 6px;
+}
+
+/* --- geral --- */
+.login-msg {
+    font-size: 14pt;
+    color: #636363;
+}
+
+.comment-msg {
+    text-align: center;
+}
+
+.text-field {
+    width: 500px;
+    margin-right: -10px;
+}
+
+/* --- nav bar area --- */
+#logo {
+    display: inline-block;
+    font-size: 22pt;
+    margin-top: 3px;
+    margin-left: 15px;
+    color: black;
+    font-weight: bolder;
+    font-family: 'Changa', sans-serif;
+}
+
+#logo:hover {text-decoration: none;}
+
+.nav {
+    font-size: 14px;
+    float: right;
+    margin-top: 3px;
+}
+
+.authenticated-items {font-size: 12pt;}
+
+#user {
+    margin: 8px 15px 0 5px;
+    display: block;
+    font-size: 12pt;
+}
+
+#login {
+    background-color: #007bff;
+    color: white;
+    border-radius: 7px;
+}
+
+#login:hover {
+    background-color: #0059b8;
+    transition: linear .6s;
+}
+
+/* --- register and login page area --- */
+#login-page {
+    width: 350px;
+    text-align: center;
+    margin: auto;
+    padding: 25px;
+    margin-top: 60px;
+    border: 1px solid #A1A1A1;
+}
+
+#login-page > div {margin: 10px;}
+
+#login-page > div {color: red;}
+
+#title-login {margin: 30px;}
+
+.login-field {
+    width: 250px;
+    padding: 4px;
+    background-color: rgb(252, 252, 252);
+    border: 1px solid gray;
+}
+
+.login-field:focus {outline: none;}
+
+.login-bnt {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px;
+    position: relative;
+    margin: 10px;
+}
+
+/* --- User page --- */
+#auctions-won {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    background-color: #fafafa;
+}
+
+.user-info {
+    margin: 30px;
+}
+
+/* --- CATEGORIES --- */
+#category-form > select {
+    display: inline-block;
+    width: 250px;
+}
+
+#no-results {
+    margin-top: 100px;
+    text-align: center;
+    color: #A1A1A1;
+}
+
+/* --- Create new auction --- */
+#create-page {margin: 30px;}
+
+#create-form > input, textarea, select {
+    display: block;
+    margin: 18px;
+}
+
+#create-form > textarea {height: 200px;}
+
+#create-form > select {width: 320px;}
+
+.create-fields {width: 650px;}
+
+.create-fields:focus {outline: none;}
+
+.submit-bnt {
+    width: 120px;
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+}
+
+/* --- Listing auctions --- */
+#index-product-img {
+    width: 190px;
+    height: 190px;
+}
+
+#product-img {
+    margin: 5px;
+    max-width: 180px;
+}
+
+#auction-box {
+    display: inline-block;
+    width: 193px;
+    height: 320px;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 13px;
+    border: 1px solid rgba(61, 61, 61, 0.082);
+}
+
+#auction-box:hover {box-shadow: 2px 2px 6px 2px rgba(22, 22, 22, 0.151);}
+
+.product-info {
+    margin: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.item-view-info {display: inline-block;}
+
+#listing-title {
+    width: 185px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 5px;
+    font-size: 13pt;
+}
+
+#description {
+    font-size: 11pt;
+    color: rgb(0, 0, 0);
+}
+
+#listing-details {
+    margin: 5px;
+    font-size: 10pt;
+    color: #A1A1A1;
+}
+
+/* --- Listing details --- */
+#product-view-img {
+    width: 450px;
+    height: 450px;
+    display: inline-block;
+    text-align: center;
+}
+
+#view-img {
+    position: relative;
+    max-width: 400px;
+    
+}
+
+.item-view-info {
+    display: block;
+    float: right;
+}
+
+#view-title, #view-price, #list-details, #bid-area {
+    margin: 5;
+    width: 800px;
+}
+
+#view-description {
+    width: 700px;
+}
+
+#close-listing {
+    margin: 8px;
+    padding: 5px;
+}
+
+#watchlist-bnt {
+    float: left;
+    background: none;
+    color: #007bff;
+    border: none;
+}
+
+#watchlist-msg {
+    text-align: center;
+}
+
+#watchlist-bnt:hover {color: black;}
+
+#view-description {font-size: 11pt;}
+
+#view-price {font-size: 20pt;}
+
+#close-listing:hover {color: #c20000;}
+
+#list-details {color: #A1A1A1;}
+
+strike {color: rgb(53, 53, 53);}
+
+#category {
+    background-color: #A1A1A1;
+    font-size: 9pt;
+    color: white;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+/* --- bid area  --- */
+#bid-area {
+    padding: 10px;
+    margin: 10px 20px 10px 50px;
+}
+
+#bid-area li {
+    margin: 10px 0 10px 20px;
+}
+
+#closed-msg {
+    text-align: left;
+}
+
+/* --- Comments ---  */
+ #comments-area {
+    margin: 20px;
+}
+
+#comment {
+    margin: 20px;
+}
+
+/* Error page  */
+#error {margin: 20px;}
+
+#error-msg {font-size: 28pt;}
+
+/* Won */
+#won {
+    
+    overflow: auto;
+    white-space: nowrap;
+}

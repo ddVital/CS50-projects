@@ -1,0 +1,38 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    New
+{% endblock %}
+
+{% block body %}
+    <div id="create-page">
+        <h2>Create New Listing</h2>
+        <form action="{% url 'create_listing' %}" method="POST">
+            {% csrf_token %} 
+            <div id="create-form">
+                <input type="text" name="product-img" id="image" class="create-fields" placeholder="Product image url" autocomplete="off">
+                <input type="text" name="title" id="title" class="create-fields" placeholder="Product name" autocomplete="off" required>
+                <input type="number" name="price" id="price" class="create-fields" step="any" placeholder="Product Price" autocomplete="off" required>
+                <textarea type="text" name="description" id="description" class="create-fields" placeholder="Product Description" maxlength="1000" autocomplete="off" required></textarea>
+                <select name="category">
+                    <option value="Art">Art</option>
+                    <option value="Books">Books</option>
+                    <option value="Cars">Cars</option>
+                    <option value="Clothes">Clothes</option>
+                    <option value="Games">Games</option>
+                    <option value="Health & Beauty">Health & Beauty</option>
+                    <option value="Home">Home</option>
+                    <option value="Literature">Literature</option>
+                    <option value="Music">Music</option>
+                    <option value="Puzzle">Puzzle</option>
+                    <option value="Science">Science</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Others" selected>Others</option>
+                </select>
+                <input type="submit" value="Create" class="submit-bnt">
+            </div>
+        </form>
+    </div>
+{% endblock %}

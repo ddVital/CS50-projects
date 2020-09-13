@@ -1,0 +1,51 @@
+{% extends 'auctions/layout.html' %}
+
+{% block title %}
+    {{ user.username }}
+{% endblock %}
+
+{% block body %}
+    {% if user.username == username %}
+        <h1>Hello, {{ user.username }}</h1>
+    {% else %}
+        <h1>{{ user.first_name }}</h1>
+    {% endif %}
+    <div class="user-info">
+        <p>Informations:</p>
+        <ul>
+            <li>username: {{ user.username }}</li>
+            <li>email: {{ user.email }}</li>
+            <li>joined date: {{ user.date_joined }}</li>
+        </ul>
+    </div>
+
+    
+    {% if user.username == username %}        
+        {% if won %}
+            <div id="won">
+                <h3>Won</h3>
+                {% for item in won %}
+                    <div id="auction-box"">
+                        {% if item.product_image %}
+                            <div id="index-product-img">
+                                <img src="{{ item.product_image }}" alt="{{ item.product_title }}" id="product-img">
+                            </div>
+                        {% else %}
+                            <img src="https://www.trendsetter.com/pub/media/catalog/product/placeholder/default/no_image_placeholder.jpg" alt="no preview" id="product-img">
+                        {% endif %}
+                        <a href="{% url 'view_item' item.id %}"><h1 class="product-info" id="listing-title" title="{{ item.product_title }}">{{ item.product_title }}</h1></a>
+                        <p class="product-info" id="description">{{ item.product_description }}</p>
+                        <p class="product-info"><strong>$ {{ item.product_price }}</strong></p>
+                        <p class="product-info" id="listing-details" title="in {{ item.post_date }} by {{ item.username }}">in {{ item.post_date }} by {{ item.username }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="user-info">
+            <h3>Others:</h3>
+            <ul>    
+                <a href="/logout">Logout</a>
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}

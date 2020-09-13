@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Auctions{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <a href="/" id="logo" class="layout-links">Auctions</a>
+        <ul class="nav">
+            {% if user.is_authenticated %}
+                <!-- Show all links if the user is authenticated -->
+                <li class="authenticated-items">
+                    <a href="{% url 'category' %}" class="nav-link">Category</a>
+                </li>
+                <li class="authenticated-items">
+                    <a href="{% url 'watchlist' %}" class="nav-link">Watchlist</a>
+                </li>
+                <li class="authenticated-items">
+                    <a href="{% url 'create_listing' %}" class="nav-link">Create Listing</a>
+                </li>
+                <div id="user">
+                    <!-- {% if user.is_authenticated %} -->
+                    Hi, <a href="{% url 'user_page' request.user.username %}"><strong>{{ request.user.username }}</strong></a>
+                    <!-- {% endif %} -->
+                </div>
+            {% else %} 
+                <!-- Show only login options if the user is not authenticated -->
+                <li class="nav-item">
+                    <a class="nav-link" id="login" href="{% url 'login' %}">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Sign Up</a>
+                </li>
+            {% endif %}
+        </ul>
+        <hr>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

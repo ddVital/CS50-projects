@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html" %}
+
+{% block title %}
+    Watchlist
+{% endblock %}
+
+{% block body %}
+<!-- show all items in watchlist -->
+    {% if products %}
+        {% for product in products %}
+            {% if product.is_closed != False %}
+                <div id="auction-box" title="{{ product.item.product_title }}">
+                    {% if product.item.product_image %}
+                        <div id="index-product-img">
+                            <img src="{{ product.item.product_image }}" alt="{{ item.auction.product_title }}" id="product-img">
+                        </div>
+                    {% else %}
+                        <img src="https://www.trendsetter.com/pub/media/catalog/product/placeholder/default/no_image_placeholder.jpg" alt="no preview" id="product-img" width="190px" height="195px">
+                    {% endif %}
+                    <a href="{% url 'view_item' product.item.id %}"><h1 class="product-info" id="listing-title">{{ product.item.product_title }}</h1></a>
+                    <p class="product-info" id="description">{{ product.item.product_description }}</p>
+                    <p class="product-info">Price: <strong>${{ product.item.product_price }}</strong></p>
+                    <p class="product-info" id="listing-details">in {{ product.item.post_date }} by {{ product.item.username }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p id="watchlist-msg">Watchlist empty</p>
+    {% endif %}
+{% endblock %}
