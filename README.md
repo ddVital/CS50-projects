@@ -1,4 +1,4 @@
-# CS50 projects
+# CS50w projects
 
-my CS50 projects
+my CS50w projects
 
